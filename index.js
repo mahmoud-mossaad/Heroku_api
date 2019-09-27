@@ -7,9 +7,10 @@ express()
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('pages/index'))
-  .get('/cool', (req, res) => res.send(cool()))
-  .get('/times', (req, res) => res.send(showTimes()))
+  .get('/', (req, res, next) => res.render('pages/index'))
+  .get('/cool', (req, res, next) => res.send(cool()))
+  .get('/times', (req, res, next) => res.send(showTimes()))
+  .get('/dimensions', (req, res, next) => res.send(showDimensions()))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
   showTimes = () => {
@@ -19,4 +20,11 @@ express()
       result += i + ' '
     }
     return result;
+  }
+  showDimensions = () => {
+    const dimensions = {
+      x: 20,
+      y: 0
+    }
+    return dimensions;
   }
