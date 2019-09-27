@@ -16,6 +16,17 @@ express()
 
   //Added the dimensions route which will give the data to the frontend
   .get('/dimensions', (req, res, next) => res.send(showDimensions()))
+
+  .use((req,res,next)=>{
+    const error = new Error ('404 Page Not Found');
+    error.status =404;
+    next(error);
+  })
+  .use((error,req,res,next)=>{
+    res.status(error.status);
+    res.send('404 Page Not Found')
+  
+  })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
   showTimes = () => {
