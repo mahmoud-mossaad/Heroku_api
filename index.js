@@ -7,9 +7,14 @@ express()
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
+  //Trials
   .get('/', (req, res, next) => res.render('pages/index'))
   .get('/cool', (req, res, next) => res.send(cool()))
   .get('/times', (req, res, next) => res.send(showTimes()))
+  //End of trials
+
+
+  //Added the dimensions route which will give the data to the frontend
   .get('/dimensions', (req, res, next) => res.send(showDimensions()))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
@@ -21,6 +26,9 @@ express()
     }
     return result;
   }
+
+
+  //Sending back the dimensions throu this method "Functions"
   showDimensions = () => {
     const dimensions = {
       x: 20,
