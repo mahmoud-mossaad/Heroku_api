@@ -1,7 +1,25 @@
 const cool = require('cool-ascii-faces')
 const express = require('express')
 const path = require('path')
+var firebase =require ('firebase')
 const PORT = process.env.PORT || 5000
+
+firebase.initializeApp({
+  serviceAccount:"./salty-hollows-99fa53ced8b0.json",
+  databaseURL:"https://salty-hollows.firebaseio.com/"
+});
+
+var ref = firebase.database().ref('node-client');
+var dimensionsRef = ref.child('dimensions');
+dimensionsRef.set ({
+  x:0,
+  y:0
+});
+dimensionsRef.update({
+  x : 5,
+  y :6
+});
+
 
 express()
   .use(express.static(path.join(__dirname, 'public')))
