@@ -13,7 +13,7 @@ express()
   .get('/times', (req, res, next) => res.send(showTimes()))
   //End of trials
 
-
+  .get('/routers', (req, res, next) => res.send(showRouters()))
   //Added the dimensions route which will give the data to the frontend
   .get('/dimensions', (req, res, next) => res.send(showDimensions()))
    //handling errors
@@ -37,7 +37,16 @@ express()
     }
     return result;
   }
+  showRouters = ()  =>  {
 
+    const routers ={
+      router1: 'SBME1',
+      router2: 'SBME2',
+      router3: 'SBME3'
+      
+    }
+     return routers;
+  }
 
   //Sending back the dimensions throu this method "Functions"
   showDimensions = () => {
