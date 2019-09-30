@@ -4,21 +4,32 @@ const path = require('path')
 var firebase =require ('firebase')
 const PORT = process.env.PORT || 5000
 
+
 firebase.initializeApp({
   serviceAccount:"./salty-hollows-99fa53ced8b0.json",
   databaseURL:"https://salty-hollows.firebaseio.com/"
 });
 
+
+
 var ref = firebase.database().ref('node-client');
 var dimensionsRef = ref.child('dimensions');
-dimensionsRef.set ({
+var strengthRef = ref.child('strength');
+
+strengthRef.on("child_changed", function(snapshot) {
+  var changedPost = snapshot.val();
+  console.log("The updated post title is " + changedPost.title);
+  dimensionsRef.update({
+    x : Math.round(Math.random()),
+    y : Math.round(Math.random())
+  });
+});
+
+/*dimensionsRef.set ({
   x:0,
   y:0
-});
-dimensionsRef.update({
-  x : 5,
-  y :6
-});
+});*/
+
 
 
 express()
