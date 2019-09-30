@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "salty-hollows",
+  "private_key_id": "99fa53ced8b0b65bba5c4d88ce07ab009b3a2ef9",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDnmeqoJEsM4zSo\ngweHHezrmaXG4PPtHf6zSx9Itrhz8AIQxj3Y8nF163SMUL6owjCR8Sqh7XwhnhGi\nUhrV32pnYtyZ+b9LDT2gTTsN6gLjLzdOOHJt96IJiIeZ4ALSfPTF+7gIyq8nUEUH\n2k2ZG0YT7rUEIiwVS6iP5rhTCF4cxDjhQMOUxPXRYpbeYjh0pfy7gluWdJhffFuz\nJJFFxLJZ6mQUvE4Iibte0chG+GDYzlcSaU9n3zTLLuBbzNQ+7vfKwQ4Rl7XzJL2H\n+MqseKRuNAWv+4oA+QIoPAosuXdc25jBHBa4Q8G+AgRcTBQLAdVJADsMzEVk4BEA\nCUt0OQ+xAgMBAAECggEAAfaMhiNUnYXZfuopaKxIw1B4lsB2YNalv4hN+hROaPEq\nW1EK2iln68t0n/HZQ93tgncsWNYF/NT1qk4O2yw7Hyg33Xg/9ldk49RzwTDwGFPg\noKGa2rLEJVeKarP64iTcAEebbjulk2w7QY9IpBkWlXmrAB94BzAufBXFDzMddRny\njkrC4WzOhBB9bXuCf4NvHZ04wUvQAGN67mzrf1lS/cNaC/HvuDtVpsV+LyqdqCNn\nUQrqQoV/hAjblPZEIJLkDzRc58b5+yLcxjYTiG6fNLStajAR02dlZrZfyzQFAqrP\nfkaYPYVdUB2RDzBHwTO6XrQmuXpu5CYAtjM42gzDNwKBgQD6vXwzKS1Kgk4OBF4O\nxZEFdyoeMJhFFYb5IGqg7gMPJAbYd+WqG6E/ui8w7VoLCu3hCqTwEnPA+bgNhEBF\ng2JyB56xe/GjyoiP1VOsgnSCBk1WGpxDkWYCE+oYVzwRMXqG7Yn7oHkokHJUJQed\neHUz0JcRsjc8LtexbUEiLJvfWwKBgQDsdab9jhHSFFHUrGvctkGbxE3uWsTqWo6z\nCMV+2cwUidXOwme7HuKLuU6B2Od18kF9bbzcBZMRaZoGTzVqoUW4pEsYi5CFx3GX\nbZZCGzKdwvjVb1wK/7d/OQ+UehkRDqioQMAu2yRPOK1VFMcjoNfyJl7TWKqGhgnS\nAAhs5hem4wKBgGYNjWl9TvPOiVpnKKk2fEoPMFNNUAx+MIthSETr2s7kyOx+EDnm\nOQEpFGADmux3rE41+N/Fgtt+SA0oUMh6Ky1iMJLocXdKzb5NA1tpVWY+jmeHOSa/\nHRenZ1Y02zvcOZSFRe3maKm78OySjcDn8DwAoBwRvy19m0iZwTLZmS+VAoGAPfFU\nHXfqEy5fgWbpmpfj9/oksBv3Ga0/VIcntWM4oui4qcEji1E7535TopA/khY0Mbdd\nkgWj0RvozV5Sj+xPZ18ijPuCkIj+qLx8cDTPvaQlq0PQyNDUMO+xtSOHDYDZjbno\nnl2p1VbzkSYwRJUN/NEwZg0EHtleGTUI//4GlCECgYBKXscoIOEHgGTaifB0TkM3\nDpooZhcqupccXv40j62Zyyymk/eHJuMHiYQoCXPUDnpBqBAFkgax1F9BfG+gWE2S\naD65T2Pczp+I60yb0s7OsUfcWj4agQ3oPtR5dKxgLEuOvjO5cggLHTtvv9aJP2UE\nZqvYmacrrfrvTaLzUPVTwA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "salty-hollows@salty-hollows.iam.gserviceaccount.com",
+  "client_id": "112022303014028106988",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/salty-hollows%40salty-hollows.iam.gserviceaccount.com"
+}
