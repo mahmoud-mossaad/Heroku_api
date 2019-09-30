@@ -100,7 +100,7 @@ express()
   var Lo=getLength(power0);
   var L1=getLength(power1);
   var L2=getLength(power2);
-  const d;
+  const d=1;
   var cos_theta=(Math.pow(d,2)+Math.pow(Lo,2)-Math.pow(L1,2))/(2*d*Lo);
   var angle =Math.acos(cos_theta);
   var sin_theta=math.sin(angle);
