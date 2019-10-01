@@ -87,39 +87,4 @@ express()
   }
 
 
-  getLength =(power)=>{  //function that takes the power of the router and returns the length
-    
-    var L=Math.abs(-7.25*Math.PI-27.515 );
-    return L;
-  }
 
-
-  Triangulation = (power0,power1,power2) =>{
-
-  var x,y; 
-  var Lo=getLength(power0);
-  var L1=getLength(power1);
-  var L2=getLength(power2);
-  const d=1;
-  var cos_theta=(Math.pow(d,2)+Math.pow(Lo,2)-Math.pow(L1,2))/(2*d*Lo);
-  var angle =Math.acos(cos_theta);
-  var sin_theta=math.sin(angle);
-  x= -Lo * cos_theta;
-  y=(Lo * sin_theta)
-  var L21=Math.sqrt(Math.pow(x_router3-x,2)+Math.pow(y_router3-y,2));
-  var L22=Math.sqrt(Math.pow(x_router3-x,2)+Math.pow(y_router3+y,2));
-  y=whichIsCloser(LL1,LL2,L2,y);
-  
-  return x,y;
-  }
-  whichIsCloser=(a,b,c,y)=>{
-    var diff1=Math.abs(c-a);
-    var diff2=Math.abs(c-b);
-    if (diff1<diff2){
-      return y;
-    }
-    else {
-      return -y;
-    }
-  
-  }
