@@ -3,7 +3,6 @@ const express = require('express')
 const path = require('path')
 var firebase =require ('firebase')
 const PORT = process.env.PORT || 5000
-const x_router3 , y_router3; //the position of router3 relative to the axis
 
 firebase.initializeApp({
   serviceAccount:"./salty-hollows-99fa53ced8b0.json",
@@ -18,11 +17,17 @@ var strengthRef = ref.child('strength');
 
 strengthRef.on("child_changed", function(snapshot) {
   var changedPost = snapshot.val();
-  console.log("The updated post title is " + changedPost.title);
-  dimensionsRef.update({
-    x : Math.round(Math.random()),
-    y : Math.round(Math.random())
-  });
+  console.log("The updated post title is " + changedPost);
+  strengthRef.on("value", function(snapshot1) {
+    console.log(snapshot1.val().wifi2);
+    result = Triangulation(snapshot1.val().wifi1, snapshot1.val().wifi2, snapshot1.val().wifi3);
+    console.log(result);
+    dimensionsRef.update({
+      x : Math.round(result[0]),
+      y : Math.round(result[1])
+    });
+  })
+
 });
 
 /*dimensionsRef.set ({
@@ -89,37 +94,53 @@ express()
 
   getLength =(power)=>{  //function that takes the power of the router and returns the length
     
-    var L=Math.abs(-7.25*Math.PI-27.515 );
+    var L=Math.abs(-0.75*power-27.515 );
     return L;
   }
 
 
   Triangulation = (power0,power1,power2) =>{
 
-  var x,y; 
+  var x,y,x1,y1; 
   var Lo=getLength(power0);
   var L1=getLength(power1);
   var L2=getLength(power2);
-  const d=1;
+  const d=45.8;
+  const x_router3=-9.82; 
+  const y_router3=-19.64;
   var cos_theta=(Math.pow(d,2)+Math.pow(Lo,2)-Math.pow(L1,2))/(2*d*Lo);
   var angle =Math.acos(cos_theta);
-  var sin_theta=math.sin(angle);
+  var sin_theta=Math.sin(angle);
   x= -Lo * cos_theta;
-  y=(Lo * sin_theta)
-  var L21=Math.sqrt(Math.pow(x_router3-x,2)+Math.pow(y_router3-y,2));
-  var L22=Math.sqrt(Math.pow(x_router3-x,2)+Math.pow(y_router3+y,2));
-  y=whichIsCloser(LL1,LL2,L2,y);
-  
-  return x,y;
+  y=(Lo * sin_theta);
+  var LL1=Math.sqrt(Math.pow(x_router3-x,2)+Math.pow(y_router3-y,2));//postive sign
+  var LL2=Math.sqrt(Math.pow(x_router3-x,2)+Math.pow(y_router3+y,2));//negative sign
+  y=whichIsCloser(LL1,LL2,L2,y);//to determine which sign is closer
+  x1=ESP_CoordnatesX(x);
+  y1=ESP_CoordnatesY(y);
+  console.log("Right");
+  return [x1,y1];
   }
-  whichIsCloser=(a,b,c,y)=>{
-    var diff1=Math.abs(c-a);
-    var diff2=Math.abs(c-b);
+  whichIsCloser=(first,second,c,y)=>{
+    var diff1=Math.abs(c-first);
+    var diff2=Math.abs(c-second);
     if (diff1<diff2){
       return y;
     }
     else {
       return -y;
     }
-  
+
   }
+
+
+  ESP_CoordnatesX = (x) =>{
+  const theta =173.64;
+  var x_ESP = x*Math.cos(theta)-x*Math.sin(theta);
+  return x_ESP;
+  }
+  ESP_CoordnatesY = (y) =>{
+    const theta =173.64;
+    var Y_ESP = y*Math.cos(theta)+y*Math.sin(theta);
+    return Y_ESP;
+    }
