@@ -18,14 +18,33 @@ var strengthRef = ref.child('strength');
 strengthRef.on("child_changed", function(snapshot) {
   var changedPost = snapshot.val();
   console.log("The updated post title is " + changedPost);
+
+
   strengthRef.on("value", function(snapshot1) {
     console.log(snapshot1.val().wifi2);
     result = Triangulation(snapshot1.val().wifi1, snapshot1.val().wifi2, snapshot1.val().wifi3);
-    console.log(result);
-    dimensionsRef.update({
-      x : Math.round(result[0]),
-      y : Math.round(result[1])
-    });
+
+
+    dimensionsRef.on("value", function(snapshot2){
+      result1 = [snapshot2.val().x, snapshot2.val().y];
+    })
+
+
+    if(isNaN(result[0])|| isNaN(result[1])){
+      console.log("here");
+      dimensionsRef.update({
+        x : Math.round(result1[0]),
+        y : Math.round(result1[1])
+      });
+    }
+    else{
+      console.log("here 2");
+      console.log(result);
+      dimensionsRef.update({
+        x : Math.round(result[0]),
+        y : Math.round(result[1])
+      });
+    }
   })
 
 });
@@ -112,13 +131,12 @@ express()
   var angle =Math.acos(cos_theta);
   var sin_theta=Math.sin(angle);
   x= -Lo * cos_theta;
-  y=(Lo * sin_theta);
+  y= Lo * sin_theta;
   var LL1=Math.sqrt(Math.pow(x_router3-x,2)+Math.pow(y_router3-y,2));//postive sign
   var LL2=Math.sqrt(Math.pow(x_router3-x,2)+Math.pow(y_router3+y,2));//negative sign
   y=whichIsCloser(LL1,LL2,L2,y);//to determine which sign is closer
   x1=ESP_CoordnatesX(x);
   y1=ESP_CoordnatesY(y);
-  console.log("Right");
   return [x1,y1];
   }
   whichIsCloser=(first,second,c,y)=>{
