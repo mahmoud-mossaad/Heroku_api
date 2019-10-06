@@ -15,30 +15,26 @@ var ref = firebase.database().ref('node-client');
 var dimensionsRef = ref.child('dimensions');
 var strengthRef = ref.child('strength');
 
+dimensionsRef.on("value", function(snapshot2){
+  console.log("here 2");
+  result1 = [snapshot2.val().x, snapshot2.val().y];
+})
 strengthRef.on("child_changed", function(snapshot) {
   var changedPost = snapshot.val();
   console.log("The updated post title is " + changedPost);
 
 
   strengthRef.on("value", function(snapshot1) {
-    console.log(snapshot1.val().wifi2);
     result = Triangulation(snapshot1.val().wifi1, snapshot1.val().wifi2, snapshot1.val().wifi3);
+    console.log(result);
 
-
-    dimensionsRef.on("value", function(snapshot2){
-      result1 = [snapshot2.val().x, snapshot2.val().y];
-    })
-
-
-    if(isNaN(result[0])|| isNaN(result[1])){
+    if(isNaN(result[1])){
       console.log("here");
       dimensionsRef.update({
-        x : Math.round(result1[0]),
-        y : Math.round(result1[1])
+        x : Math.round(result[0]),
       });
     }
     else{
-      console.log("here 2");
       console.log(result);
       dimensionsRef.update({
         x : Math.round(result[0]),
@@ -124,7 +120,8 @@ express()
   var Lo=getLength(power0);
   var L1=getLength(power1);
   var L2=getLength(power2);
-  const d=45.8;
+  //const d=45.8;
+  const d = 50;
   const x_router3=-9.82; 
   const y_router3=-19.64;
   var cos_theta=(Math.pow(d,2)+Math.pow(Lo,2)-Math.pow(L1,2))/(2*d*Lo);
