@@ -31,14 +31,14 @@ strengthRef.on("child_changed", function(snapshot) {
     if(isNaN(result[1])){
       console.log("here");
       dimensionsRef.update({
-        x : Math.round(result[0]),
+        x : -Math.round(result[0])*10 + 20,
       });
     }
     else{
       console.log(result);
       dimensionsRef.update({
-        x : Math.round(result[0]),
-        y : Math.round(result[1])
+        x : -Math.round(result[0])*10,
+        y : -Math.round(result[1]) + 50
       });
     }
   })
@@ -117,11 +117,11 @@ express()
   Triangulation = (power0,power1,power2) =>{
 
   var x,y,x1,y1; 
-  var Lo=getLength(power0);
-  var L1=getLength(power1);
-  var L2=getLength(power2);
-  //const d=45.8;
-  const d = 50;
+  var Lo=(power0+9.559305)/-0.230391;
+  var L1=(power1+25.481529)/-0.57717;
+  var L2=(power2+3.32866)/-0.175319;
+  const d=9.59;
+  
   const x_router3=-9.82; 
   const y_router3=-19.64;
   var cos_theta=(Math.pow(d,2)+Math.pow(Lo,2)-Math.pow(L1,2))/(2*d*Lo);
